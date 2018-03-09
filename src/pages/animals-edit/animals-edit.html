@@ -1,0 +1,42 @@
+<!--
+  Generated template for the AnimalsEditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>animalsEdit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>
+        Nom
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="animalData.title" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>
+        Cri
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="animalData.desc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>
+        Article
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="animalData.article"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block color="primary" (click)="validateForm()">Valider</button>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

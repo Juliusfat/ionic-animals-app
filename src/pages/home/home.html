@@ -1,14 +1,47 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Cri des animaux
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showReorder=!showReorder">
+        <ion-icon name="reorder" [color]="showReorder?'secondary':'dark'"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-list>
+    <ion-item-group [reorder]="showReorder" (ionItemReorder)="reorderAnimals($event)">
+
+      <ion-item-sliding side="right" *ngFor="let item of animals ; let pos=index">
+        <ion-item (click)="chooseAnimal(pos)">
+          <h3>{{ item.title}}</h3>
+          <p>{{ item.desc}}</p>
+          <ion-avatar item-left>
+            <img src="assets/{{ item.image}}">
+          </ion-avatar>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="primary"(click)="editAnimals(item)">Edit</button>
+          <button ion-button color="danger"(click)="deleteAnimals(pos)">Delete</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8 offset-2>
+        <button ion-button [color]="playing?'secondary':'primary'" block (click)="playSound()">Jouer un son </button>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>
